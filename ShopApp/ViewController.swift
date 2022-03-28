@@ -7,13 +7,26 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+protocol ViewControllerDelegate {
+    func updateTitle(text: String)
+}
 
+class ViewController: UIViewController {
+    
+    var delegate: ViewControllerDelegate?
+    let tableVC = TableTableViewController()
+    
+    @IBOutlet weak var fistTF: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
     }
-
-
+    @IBAction func sendInfo(_ sender: UIButton) {
+        let text = fistTF.text!
+        delegate?.updateTitle(text: text)
+        navigationController?.popViewController(animated: true)
+    }
 }
 
