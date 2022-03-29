@@ -16,7 +16,7 @@ class TableTableViewController: UITableViewController {
 
         let myView = SecondViewController()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
-        title = "1111111"
+        title = "Test"
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -29,8 +29,8 @@ class TableTableViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let myViewController = SecondViewController()
-        navigationController?.pushViewController(myViewController, animated: true)
+        let secondVC = SecondViewController()
+        navigationController?.pushViewController(secondVC, animated: true)
     }
 }
 

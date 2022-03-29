@@ -110,11 +110,11 @@
 				FACEBD9A27F0DFA0007F62CE /* SceneDelegate.swift */,
 				FACEBD9C27F0DFA0007F62CE /* ViewController.swift */,
 				FACEBD9E27F0DFA0007F62CE /* Main.storyboard */,
-				FA0A5E2427F0E1CF0071B727 /* TableTableViewController.swift */,
 				FACEBDA427F0DFA1007F62CE /* Assets.xcassets */,
 				FACEBDA627F0DFA1007F62CE /* LaunchScreen.storyboard */,
 				FACEBDA927F0DFA1007F62CE /* Info.plist */,
 				FACEBDA127F0DFA0007F62CE /* ShopApp.xcdatamodeld */,
+				FA0A5E2427F0E1CF0071B727 /* TableTableViewController.swift */,
 			);
 			path = ShopApp;
 			sourceTree = "<group>";
@@ -215,7 +215,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FACEBD9027F0DFA0007F62CE /* Build configuration list for PBXProject "ShopApp" */;
+			buildConfigurationList = FACEBD9027F0DFA0007F62CE /* Build configuration list for PBXProject "Delegate test" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -577,7 +577,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FACEBD9027F0DFA0007F62CE /* Build configuration list for PBXProject "ShopApp" */ = {
+		FACEBD9027F0DFA0007F62CE /* Build configuration list for PBXProject "Delegate test" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FACEBDC027F0DFA1007F62CE /* Debug */,
