@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FA0A5E2527F0E1CF0071B727 /* TableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0A5E2427F0E1CF0071B727 /* TableTableViewController.swift */; };
+		FA5B2D7B27F2467C00844694 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5B2D7A27F2467C00844694 /* SecondViewController.swift */; };
 		FACEBD9927F0DFA0007F62CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEBD9827F0DFA0007F62CE /* AppDelegate.swift */; };
 		FACEBD9B27F0DFA0007F62CE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEBD9A27F0DFA0007F62CE /* SceneDelegate.swift */; };
 		FACEBD9D27F0DFA0007F62CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEBD9C27F0DFA0007F62CE /* ViewController.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		FA0A5E2427F0E1CF0071B727 /* TableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableTableViewController.swift; sourceTree = "<group>"; };
+		FA5B2D7A27F2467C00844694 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		FACEBD9527F0DFA0007F62CE /* ShopApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShopApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FACEBD9827F0DFA0007F62CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FACEBD9A27F0DFA0007F62CE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 		FACEBD8C27F0DFA0007F62CE = {
 			isa = PBXGroup;
 			children = (
+				FA5B2D7A27F2467C00844694 /* SecondViewController.swift */,
 				FACEBD9727F0DFA0007F62CE /* ShopApp */,
 				FACEBDB127F0DFA1007F62CE /* ShopAppTests */,
 				FACEBDBB27F0DFA1007F62CE /* ShopAppUITests */,
@@ -268,6 +271,7 @@
 				FACEBD9D27F0DFA0007F62CE /* ViewController.swift in Sources */,
 				FACEBD9927F0DFA0007F62CE /* AppDelegate.swift in Sources */,
 				FACEBD9B27F0DFA0007F62CE /* SceneDelegate.swift in Sources */,
+				FA5B2D7B27F2467C00844694 /* SecondViewController.swift in Sources */,
 				FACEBDA327F0DFA0007F62CE /* ShopApp.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

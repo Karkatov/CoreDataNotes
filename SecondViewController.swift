@@ -1,17 +1,21 @@
 //
-//  ViewController.swift
+//  myViewController.swift
 //  ShopApp
 //
-//  Created by Duxxless on 27.03.2022.
+//  Created by Duxxless on 28.03.2022.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+protocol SendTextDelegate {
+    func sendText(text: String)
+}
+
+class SecondViewController: UIViewController {
     
     let button: UIButton = {
         let myButton = UIButton(type: .system)
-        myButton.setTitle("Передать вперед👉🏻", for: .normal)
+        myButton.setTitle("👈🏻Передать обратно", for: .normal)
         myButton.backgroundColor = .systemMint
         myButton.tintColor = .white
         myButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
@@ -26,11 +30,14 @@ class ViewController: UIViewController {
         return tf
     }()
 
+    //delegate
+    var delegate: SendTextDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setView()
+       
     }
     
     func setView() {
@@ -43,22 +50,12 @@ class ViewController: UIViewController {
         
         textfield.frame = CGRect(x: 30, y: 200, width: view.bounds.size.width - 60, height: 40)
         view.addSubview(textfield)
-        
-        
-        let secondVC = SecondViewController()
-        secondVC.delegate = self
     }
     
-    // Кнопка вперед
+    // Кнопка назад
     @objc func goToSecondVC() {
-   
-        let secodViewController = SecondViewController()
-        navigationController?.pushViewController(secodViewController, animated: true)
-    }
-}
-
-extension ViewController: SendTextDelegate {
-    func sendText(text: String) {
-        textfield.text = text
+        guard let text = textfield.text else { return }
+        delegate?.sendText(text: text)
+        navigationController?.popViewController(animated: true)
     }
 }

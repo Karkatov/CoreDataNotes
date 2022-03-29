@@ -14,6 +14,7 @@ class TableTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let myView = SecondViewController()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
         title = "1111111"
     }
@@ -27,20 +28,9 @@ class TableTableViewController: UITableViewController {
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "111", sender: nil)
+        
+        let myViewController = SecondViewController()
+        navigationController?.pushViewController(myViewController, animated: true)
     }
 }
 
-extension TableTableViewController: ViewControllerDelegate {
-    func updateTitle(text: String) {
-        products.insert(text, at: 0)
-        let indexPath = IndexPath(row: 0, section: 0)
-        tableView.insertRows(at: [indexPath], with: .automatic)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as! ViewController
-        vc.delegate = self
-        
-    }
-}
