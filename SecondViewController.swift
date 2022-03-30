@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol SendTextDelegate {
-    func sendText(text: String)
-}
-
 class SecondViewController: UIViewController {
     
     let button: UIButton = {
@@ -30,7 +26,7 @@ class SecondViewController: UIViewController {
         return tf
     }()
 
-    //delegate
+    // экземпляр протокола
     var delegate: SendTextDelegate?
     
     override func viewDidLoad() {
@@ -45,7 +41,7 @@ class SecondViewController: UIViewController {
         
         button.frame = CGRect(x: view.bounds.size.width / 2 - 130,
                               y: 500, width: 260, height: 70)
-        button.addTarget(self, action: #selector(goToSecondVC), for: .touchUpInside)
+        button.addTarget(self, action: #selector(goToVC), for: .touchUpInside)
         view.addSubview(button)
         
         textfield.frame = CGRect(x: 30, y: 200, width: view.bounds.size.width - 60, height: 40)
@@ -53,8 +49,9 @@ class SecondViewController: UIViewController {
     }
     
     // Кнопка назад
-    @objc func goToSecondVC() {
+    @objc func goToVC() {
         guard let text = textfield.text else { return }
+        // вызов метода протокола
         delegate?.sendText(text: text)
         navigationController?.popViewController(animated: true)
     }

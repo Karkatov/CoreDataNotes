@@ -85,6 +85,7 @@
 		FACEBD8C27F0DFA0007F62CE = {
 			isa = PBXGroup;
 			children = (
+				FACEBD9C27F0DFA0007F62CE /* ViewController.swift */,
 				FA5B2D7A27F2467C00844694 /* SecondViewController.swift */,
 				FACEBD9727F0DFA0007F62CE /* ShopApp */,
 				FACEBDB127F0DFA1007F62CE /* ShopAppTests */,
@@ -108,7 +109,6 @@
 			children = (
 				FACEBD9827F0DFA0007F62CE /* AppDelegate.swift */,
 				FACEBD9A27F0DFA0007F62CE /* SceneDelegate.swift */,
-				FACEBD9C27F0DFA0007F62CE /* ViewController.swift */,
 				FACEBD9E27F0DFA0007F62CE /* Main.storyboard */,
 				FACEBDA427F0DFA1007F62CE /* Assets.xcassets */,
 				FACEBDA627F0DFA1007F62CE /* LaunchScreen.storyboard */,

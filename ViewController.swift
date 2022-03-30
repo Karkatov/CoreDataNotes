@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol SendTextDelegate {
+    func sendText(text: String)
+}
+
 class ViewController: UIViewController {
     
     let button: UIButton = {
@@ -43,17 +47,16 @@ class ViewController: UIViewController {
         
         textfield.frame = CGRect(x: 30, y: 200, width: view.bounds.size.width - 60, height: 40)
         view.addSubview(textfield)
-        
-        
-        let secondVC = SecondViewController()
-        secondVC.delegate = self
+    
     }
     
     // Кнопка вперед
     @objc func goToSecondVC() {
    
-        let secodViewController = SecondViewController()
-        navigationController?.pushViewController(secodViewController, animated: true)
+        let secondViewController = SecondViewController()
+        // подписали контроллер на протокол
+        secondViewController.delegate = self
+        navigationController?.pushViewController(secondViewController, animated: true)
     }
 }
 
