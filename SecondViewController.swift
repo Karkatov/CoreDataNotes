@@ -25,15 +25,19 @@ class SecondViewController: UIViewController {
         tf.font = UIFont.boldSystemFont(ofSize: 20)
         return tf
     }()
-
-    // экземпляр протокола
-    var delegate: SendTextDelegate?
     
+    var delegate: ViewControllerDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setView()
        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("willAppear")
+        
     }
     
     func setView() {
@@ -51,8 +55,8 @@ class SecondViewController: UIViewController {
     // Кнопка назад
     @objc func goToVC() {
         guard let text = textfield.text else { return }
-        // вызов метода протокола
         delegate?.sendText(text: text)
         navigationController?.popViewController(animated: true)
     }
 }
+

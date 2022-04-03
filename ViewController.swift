@@ -4,12 +4,11 @@
 //
 //  Created by Duxxless on 27.03.2022.
 //
-
-import UIKit
-
-protocol SendTextDelegate {
+protocol ViewControllerDelegate {
     func sendText(text: String)
 }
+
+import UIKit
 
 class ViewController: UIViewController {
     
@@ -29,11 +28,11 @@ class ViewController: UIViewController {
         tf.font = UIFont.boldSystemFont(ofSize: 20)
         return tf
     }()
-
+    var complitionHandler: ((Bool) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         setView()
     }
     
@@ -47,21 +46,24 @@ class ViewController: UIViewController {
         
         textfield.frame = CGRect(x: 30, y: 200, width: view.bounds.size.width - 60, height: 40)
         view.addSubview(textfield)
-    
+
     }
     
     // Кнопка вперед
     @objc func goToSecondVC() {
-   
-        let secondViewController = SecondViewController()
-        // подписали контроллер на протокол
-        secondViewController.delegate = self
-        navigationController?.pushViewController(secondViewController, animated: true)
+
+        let secondVC = SecondViewController()
+        secondVC.delegate = self
+        
+        navigationController?.pushViewController(secondVC, animated: true)
+        dismiss(animated: true)
     }
 }
 
-extension ViewController: SendTextDelegate {
+extension ViewController: ViewControllerDelegate {
     func sendText(text: String) {
         textfield.text = text
     }
+    
+    
 }
