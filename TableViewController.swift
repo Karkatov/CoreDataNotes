@@ -10,6 +10,7 @@ import UIKit
 class TableViewController: UITableViewController {
 
     private let identifier = "Cell"
+    private var tasks: [String] = ["Hello", "GoodBay"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,11 @@ class TableViewController: UITableViewController {
     
     @objc func showAlert() {
         
+        let alert = UIAlertController(title: "New task", message: nil, preferredStyle: .alert)
+        let addTaskAction = UIAlertAction(title: "Add", style: .default) { [weak self] _ in
+            guard let optionalTask = alert.textFields?.first, let task = optionalTask.text, task != "" else { return }
+            tasks.insert(task, at: 0)
+        }
     }
 }
     
@@ -39,13 +45,14 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return tasks.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
 
-        cell.textLabel?.text = "111"
+        let task = tasks[indexPath.row]
+        cell.textLabel?.text = task
         return cell
     }
 
