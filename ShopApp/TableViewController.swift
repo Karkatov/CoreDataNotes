@@ -17,7 +17,7 @@ class TableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //deleteTasks()
         setTableView()
     }
     
@@ -25,7 +25,8 @@ class TableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         let fetchRequest = Task.fetchRequest()
-        
+        let sortDescription = NSSortDescriptor(key: "title", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescription]
         do {
             tasks = try context.fetch(fetchRequest)
         } catch let error as NSError {
@@ -46,7 +47,7 @@ class TableViewController: UITableViewController {
         let alert = UIAlertController(title: "New task", message: nil, preferredStyle: .alert)
         let saveAction = UIAlertAction(title: "Add", style: .default) { [weak self] _ in
             guard let optionalTask = alert.textFields?.first, let newTask = optionalTask.text, newTask != "" else { return }
-            self?.saveTask(withTittle: newTask)
+            self?.saveTask(withTitle: newTask)
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .default)
@@ -59,10 +60,10 @@ class TableViewController: UITableViewController {
         present(alert, animated: true)
     }
     
-    private func saveTask(withTittle title: String) {
+    private func saveTask(withTitle title: String) {
         guard let entity = NSEntityDescription.entity(forEntityName: "Task", in: context) else { return }
         let taskObject = Task(entity: entity, insertInto: context)
-        taskObject.tittle = title
+        taskObject.title = title
         
         do {
             try context.save()
@@ -70,6 +71,20 @@ class TableViewController: UITableViewController {
             tasks.insert(taskObject, at: 0)
             let indexPath = IndexPath(row: 0, section: 0)
             tableView.insertRows(at: [indexPath], with: .automatic)
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+    }
+    
+    private func deleteTasks() {
+        
+        let fetchRequest = Task.fetchRequest()
+        guard let objects = try? context.fetch(fetchRequest) else { return }
+        for object in objects {
+            context.delete(object)
+        }
+        do {
+            try context.save()
         } catch let error as NSError {
             print(error.localizedDescription)
         }
@@ -90,9 +105,29 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
 
-        let task = tasks[indexPath.row].tittle
+        let task = tasks[indexPath.row].title
         cell.textLabel?.text = task
         return cell
     }
+        
+        override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+            .delete
+        }
+        
+        override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+            
+            let fetchRequest = Task.fetchRequest()
+            guard let objects = try? context.fetch(fetchRequest) else { return }
+            context.delete(objects[indexPath.row])
+            do {
+                try context.save()
+
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+            tasks.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            print("Del")
+        }
 
 }
