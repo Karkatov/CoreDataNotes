@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -17,14 +18,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
         guard let scene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: scene)
-        
+    
         let navigationController = UINavigationController()
         let tableViewController = TableViewController()
+        tableViewController.context = getContext()
         navigationController.setViewControllers([tableViewController], animated: true)
         window.rootViewController = navigationController
         self.window = window
         window.makeKeyAndVisible()
         
+    }
+    
+    private func getContext() -> NSManagedObjectContext {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        return context
     }
 }
 
