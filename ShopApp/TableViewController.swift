@@ -32,6 +32,7 @@ class TableViewController: UITableViewController {
         } catch let error as NSError {
             print(error.localizedDescription)
         }
+        
     }
     
     private func setTableView() {
