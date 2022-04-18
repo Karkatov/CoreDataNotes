@@ -19,10 +19,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: scene)
     
-        let navigationController = UINavigationController()
+        
         let tableViewController = TableViewController()
+        let navigationController = UINavigationController(rootViewController: tableViewController)
         tableViewController.context = getContext()
-        navigationController.setViewControllers([tableViewController], animated: true)
         window.rootViewController = navigationController
         self.window = window
         window.makeKeyAndVisible()
