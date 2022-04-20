@@ -38,7 +38,6 @@ class TableViewController: UITableViewController {
     private func setTableView() {
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
-        
         navigationItem.leftBarButtonItem = self.editButtonItem
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAlert))
     }
@@ -128,7 +127,6 @@ class TableViewController: UITableViewController {
             }
             tasks.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            print("Del")
         }
 
 }

@@ -11,8 +11,8 @@ import CoreData
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     
@@ -30,9 +30,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func getContext() -> NSManagedObjectContext {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         return context
+    }
+    
+    
+    func sceneDidEnterBackground(_ scene: UIScene) {
+        appDelegate.saveContext()
     }
 }
 
